@@ -1,0 +1,87 @@
+*,*::before,*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrapper{
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    font-size: 20px;
+    font-family: 'Poppins',sans-serif;
+}
+table{
+    border-collapse: collapse;
+    min-width: 250px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.181);
+    border-bottom: 2px solid black;
+    border-radius: 15px 15px 0 0;
+
+}
+tbody{
+    counter-set: 'row-count' 0;
+}
+tr{
+    counter-increment: row-count;
+    border-bottom: 1.5px solid rgba(6, 6, 6, 0.181);
+}
+
+tbody > tr > td:first-child::after{
+    content: counter(row-count);
+}
+
+
+thead{
+    border-radius: 15px 15px 0 0;
+    overflow: hidden;
+    background-color: rgb(230, 224, 216);
+}
+
+th,td {
+    text-align: left;
+    padding: 0.5em;
+    position: relative;
+}
+tr button{
+    height: 100%;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.action-menu{
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+    left: 100%;
+    list-style: none;
+    width: 200%;
+    height: 100%;
+    display: flex;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    transition: 
+        visibility 0.3s ease,
+        opacity 0.3s ease,
+        pointer-events 0.3s ease;
+}
+.action-menu.active{
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.action-menu li{
+    flex-grow: 1;
+}
+.action-menu li:first-child{
+    border-right: 1px solid rgba(0, 0, 0, 0.20);
+}
+.action-menu button{
+    width: 100%;
+}
